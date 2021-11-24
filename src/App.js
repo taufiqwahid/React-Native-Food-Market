@@ -1,12 +1,13 @@
+import {NavigationContainer} from '@react-navigation/native';
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
-import {SplashScreen} from './pages';
+import {StyleSheet} from 'react-native';
+import Router from './router';
 
 const App = () => {
   return (
-    <View style={{backgroundColor: '#fff', flex: 1}}>
-      <SplashScreen />
-    </View>
+    <NavigationContainer>
+      <Router />
+    </NavigationContainer>
   );
 };
 
