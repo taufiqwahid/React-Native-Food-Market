@@ -24,7 +24,7 @@ const SuccessSignUp = ({navigation}) => {
         <View style={{width: 200, alignSelf: 'center'}}>
           <Button
             text="Find Foods"
-            onPress={() => navigation.replace('NextSignUp')}
+            onPress={() => navigation.replace('MainApp')}
           />
         </View>
       </View>
