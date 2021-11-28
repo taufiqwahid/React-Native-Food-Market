@@ -1,5 +1,5 @@
 import React from 'react';
-import {ScrollView, StyleSheet, Text, View} from 'react-native';
+import {ScrollView, StyleSheet, Text} from 'react-native';
 import {SceneMap, TabBar, TabView} from 'react-native-tab-view';
 import {ListItemFood} from '.';
 import {Gap} from '..';
@@ -20,7 +20,16 @@ const FirstRoute = () => (
 );
 
 const SecondRoute = () => (
-  <View style={{flex: 1, backgroundColor: '#673ab7'}} />
+  <ScrollView
+    style={{flex: 1, backgroundColor: '#fff'}}
+    showsVerticalScrollIndicator={false}>
+    <Gap height={8} />
+    <ListItemFood image={FoodDummy3} />
+    <ListItemFood image={FoodDummy2} />
+    <ListItemFood image={FoodDummy1} />
+    <ListItemFood image={FoodDummy2} />
+    <ListItemFood image={FoodDummy1} />
+  </ScrollView>
 );
 const renderScene = SceneMap({
   1: FirstRoute,

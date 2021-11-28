@@ -3,6 +3,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 import React from 'react';
 import {
+  FoodDetails,
   Home,
   NextSignUp,
   Order,
@@ -38,6 +39,7 @@ const Router = () => {
       <Stack.Screen name="SignUp" component={SignUp} />
       <Stack.Screen name="NextSignUp" component={NextSignUp} />
       <Stack.Screen name="SuccessSignUp" component={SuccessSignUp} />
+      <Stack.Screen name="FoodDetail" component={FoodDetails} />
     </Stack.Navigator>
   );
 };

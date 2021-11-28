@@ -1,9 +1,12 @@
+import {useNavigation} from '@react-navigation/core';
 import React from 'react';
-import {Image, StyleSheet, Text, View} from 'react-native';
-import {FoodDummy1, IcStarOff, IcStarOn} from '../../assets';
+import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {Rating} from '.';
+import {IcStarOff, IcStarOn} from '../../assets';
 import {Texts} from '../../utils/texts';
 
 const FoodCard = ({image}) => {
+  const navigation = useNavigation();
   return (
     <View
       style={{
@@ -36,15 +39,10 @@ const FoodCard = ({image}) => {
         }}
       />
       <View style={{marginLeft: 12}}>
-        <Text style={{...Texts.regular2, marginTop: 12}}>Cherry Healthy</Text>
-        <View style={{flexDirection: 'row'}}>
-          <IcStarOn />
-          <IcStarOn />
-          <IcStarOn />
-          <IcStarOn />
-          <IcStarOff />
-          <Text style={{...Texts.regular1}}>4.5</Text>
-        </View>
+        <TouchableOpacity onPress={() => navigation.navigate('FoodDetail')}>
+          <Text style={{...Texts.regular2, marginTop: 12}}>Cherry Healthy</Text>
+        </TouchableOpacity>
+        <Rating />
       </View>
     </View>
   );

@@ -1,11 +1,15 @@
+import {useNavigation} from '@react-navigation/core';
 import React from 'react';
-import {Image, StyleSheet, Text, View} from 'react-native';
+import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {Rating} from '.';
 import {IcStarOff, IcStarOn} from '../../assets';
 import {Texts} from '../../utils/texts';
 
 const ListItemFood = ({image}) => {
+  const navigation = useNavigation();
   return (
-    <View
+    <TouchableOpacity
+      onPress={() => navigation.navigate('FoodDetail')}
       style={{
         marginHorizontal: 24,
         marginVertical: 8,
@@ -23,15 +27,8 @@ const ListItemFood = ({image}) => {
           <Text style={{...Texts.regular1, fontSize: 13}}>IDR 289.000</Text>
         </View>
       </View>
-      <View style={{flexDirection: 'row'}}>
-        <IcStarOn />
-        <IcStarOn />
-        <IcStarOn />
-        <IcStarOn />
-        <IcStarOff />
-        <Text style={{...Texts.regular1}}>4.5</Text>
-      </View>
-    </View>
+      <Rating />
+    </TouchableOpacity>
   );
 };
 
