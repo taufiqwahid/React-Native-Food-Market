@@ -1,19 +1,19 @@
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import React from 'react';
+import {BottomNavigator} from '../components';
 import {
   FoodDetails,
   Home,
   NextSignUp,
   Order,
+  OrderSummary,
   Profile,
   SignIn,
   SignUp,
   SplashScreen,
   SuccessSignUp,
 } from '../pages';
-import {BottomNavigator} from '../components';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -40,6 +40,7 @@ const Router = () => {
       <Stack.Screen name="NextSignUp" component={NextSignUp} />
       <Stack.Screen name="SuccessSignUp" component={SuccessSignUp} />
       <Stack.Screen name="FoodDetail" component={FoodDetails} />
+      <Stack.Screen name="OrderSummary" component={OrderSummary} />
     </Stack.Navigator>
   );
 };
