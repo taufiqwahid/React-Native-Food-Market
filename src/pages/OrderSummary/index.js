@@ -11,7 +11,7 @@ import {
 import {Colors} from '../../utils/colors';
 import {Texts} from '../../utils/texts';
 
-const OrderSummary = () => {
+const OrderSummary = ({navigation}) => {
   return (
     <ScrollView style={{backgroundColor: Colors.background, flex: 1}}>
       <Header title="Payment" subTitle="You deserve better meal" onBack />
@@ -63,7 +63,10 @@ const OrderSummary = () => {
           </View>
         </View>
         <View style={{marginVertical: 24}}>
-          <Button text="Checkout Now" />
+          <Button
+            text="Checkout Now"
+            onPress={() => navigation.replace('SuccessOrder')}
+          />
         </View>
       </View>
     </ScrollView>

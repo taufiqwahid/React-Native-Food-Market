@@ -1,10 +1,11 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import {IlSuccessSignUp} from '../../assets';
+import {IlSuccessOrder} from '../../assets';
 import {Button, Gap} from '../../components';
+import {Colors} from '../../utils/colors';
 import {Texts} from '../../utils/texts';
 
-const SuccessSignUp = ({navigation}) => {
+const SuccessOrder = ({navigation}) => {
   return (
     <View
       style={{
@@ -14,14 +15,14 @@ const SuccessSignUp = ({navigation}) => {
         justifyContent: 'center',
       }}>
       <View style={{alignItems: 'center'}}>
-        <IlSuccessSignUp />
+        <IlSuccessOrder />
         <Gap height={24} />
         <View style={{marginHorizontal: '20%'}}>
           <Text style={{...Texts.regular2, textAlign: 'center', fontSize: 20}}>
-            Yeay! Completed
+            You’ve Made Order
           </Text>
           <Text style={{...Texts.regular1, textAlign: 'center'}}>
-            some foods as a self-reward
+            Just stay at home while we are preparing your best foods
           </Text>
         </View>
         <Gap height={24} />
@@ -29,15 +30,22 @@ const SuccessSignUp = ({navigation}) => {
       <View>
         <View style={{width: 300, alignSelf: 'center'}}>
           <Button
-            text="Find Foods"
-            onPress={() => navigation.replace('MainApp')}
+            text="Order Other Foods"
+            onPress={() => navigation.replace('MainApp ')}
           />
+          <View style={{marginTop: 16}}>
+            <Button
+              text="View My Order"
+              color={Colors.grey}
+              onPress={() => navigation.replace('Home')}
+            />
+          </View>
         </View>
       </View>
     </View>
   );
 };
 
-export default SuccessSignUp;
+export default SuccessOrder;
 
 const styles = StyleSheet.create({});

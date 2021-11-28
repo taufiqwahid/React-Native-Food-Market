@@ -12,6 +12,7 @@ import {
   SignIn,
   SignUp,
   SplashScreen,
+  SuccessOrder,
   SuccessSignUp,
 } from '../pages';
 
@@ -41,6 +42,7 @@ const Router = () => {
       <Stack.Screen name="SuccessSignUp" component={SuccessSignUp} />
       <Stack.Screen name="FoodDetail" component={FoodDetails} />
       <Stack.Screen name="OrderSummary" component={OrderSummary} />
+      <Stack.Screen name="SuccessOrder" component={SuccessOrder} />
     </Stack.Navigator>
   );
 };
