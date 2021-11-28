@@ -7,7 +7,7 @@ import {
   View,
 } from 'react-native';
 import {FoodDummy6, IcBackWhite} from '../../assets';
-import {Button, Rating} from '../../components';
+import {Button, Counter, Rating} from '../../components';
 import {Texts} from '../../utils/texts';
 
 const FoodDetails = ({navigation}) => {
@@ -33,46 +33,10 @@ const FoodDetails = ({navigation}) => {
         <View>
           <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
             <View>
-              <Text style={{...Texts.regular1}}>Cherry Healthy</Text>
+              <Text style={{...Texts.regular2}}>Cherry Healthy</Text>
               <Rating />
             </View>
-            <View style={{flexDirection: 'row'}}>
-              <TouchableOpacity
-                style={{
-                  width: 26,
-                  height: 26,
-                  borderRadius: 8,
-                  borderWidth: 1,
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  paddingTop: 2,
-                }}>
-                <Text style={{...Texts.regular1}}>-</Text>
-              </TouchableOpacity>
-              <View
-                style={{
-                  width: 30,
-                  height: 26,
-                  borderRadius: 8,
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  paddingTop: 2,
-                }}>
-                <Text style={{...Texts.regular2}}>12</Text>
-              </View>
-              <TouchableOpacity
-                style={{
-                  width: 26,
-                  height: 26,
-                  borderRadius: 8,
-                  borderWidth: 1,
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  paddingTop: 2,
-                }}>
-                <Text style={{...Texts.regular1}}>+</Text>
-              </TouchableOpacity>
-            </View>
+            <Counter />
           </View>
           <View style={{marginTop: 12}}>
             <Text style={{...Texts.regular1}}>
@@ -100,7 +64,10 @@ const FoodDetails = ({navigation}) => {
               IDR 12.289.000
             </Text>
           </View>
-          <Button text="Order Now" />
+          <Button
+            text="Order Now"
+            onPress={() => navigation.navigate('OrderSummary')}
+          />
         </View>
       </View>
     </View>

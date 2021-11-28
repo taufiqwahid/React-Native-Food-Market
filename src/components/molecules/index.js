@@ -1,12 +1,14 @@
-import Header from './Header';
 import BottomNavigator from './BottomNavigator';
+import Counter from './Counter';
 import FoodCard from './FoodCard';
+import Header from './Header';
 import HomeProfile from './HomeProfile';
 import ListItemFood from './ListItemFood';
-import TabViewFood from './TabViewFood';
+import ListItemText from './ListItemText';
 import Rating from './Rating';
-//
-export {Header, BottomNavigator, Rating};
+import TabViewFood from './TabViewFood';
 
+//
+export {Header, BottomNavigator, Rating, Counter, ListItemText};
 //
 export {HomeProfile, FoodCard, ListItemFood, TabViewFood};

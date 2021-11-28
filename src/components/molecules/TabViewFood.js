@@ -12,10 +12,10 @@ const FirstRoute = () => (
     style={{flex: 1, backgroundColor: '#fff'}}
     showsVerticalScrollIndicator={false}>
     <Gap height={8} />
-    <ListItemFood image={FoodDummy1} />
-    <ListItemFood image={FoodDummy2} />
-    <ListItemFood image={FoodDummy3} />
-    <ListItemFood image={FoodDummy1} />
+    <ListItemFood rating image={FoodDummy1} />
+    <ListItemFood rating image={FoodDummy2} />
+    <ListItemFood rating image={FoodDummy3} />
+    <ListItemFood rating image={FoodDummy1} />
   </ScrollView>
 );
 
@@ -24,11 +24,11 @@ const SecondRoute = () => (
     style={{flex: 1, backgroundColor: '#fff'}}
     showsVerticalScrollIndicator={false}>
     <Gap height={8} />
-    <ListItemFood image={FoodDummy3} />
-    <ListItemFood image={FoodDummy2} />
-    <ListItemFood image={FoodDummy1} />
-    <ListItemFood image={FoodDummy2} />
-    <ListItemFood image={FoodDummy1} />
+    <ListItemFood rating image={FoodDummy3} />
+    <ListItemFood rating image={FoodDummy2} />
+    <ListItemFood rating image={FoodDummy1} />
+    <ListItemFood rating image={FoodDummy2} />
+    <ListItemFood rating image={FoodDummy1} />
   </ScrollView>
 );
 const renderScene = SceneMap({

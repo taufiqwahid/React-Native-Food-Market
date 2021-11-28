@@ -2,10 +2,9 @@ import {useNavigation} from '@react-navigation/core';
 import React from 'react';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {Rating} from '.';
-import {IcStarOff, IcStarOn} from '../../assets';
 import {Texts} from '../../utils/texts';
 
-const ListItemFood = ({image}) => {
+const ListItemFood = ({image, items, rating, orders}) => {
   const navigation = useNavigation();
   return (
     <TouchableOpacity
@@ -24,10 +23,20 @@ const ListItemFood = ({image}) => {
         />
         <View style={{marginLeft: 12}}>
           <Text style={{...Texts.regular2}}>Soup Bumil</Text>
-          <Text style={{...Texts.regular1, fontSize: 13}}>IDR 289.000</Text>
+          <View style={{flexDirection: 'row'}}>
+            {orders && (
+              <Text style={{...Texts.regular1, fontSize: 13}}>
+                {14} Items .{' '}
+              </Text>
+            )}
+            <Text style={{...Texts.regular1, fontSize: 13}}>IDR 289.000</Text>
+          </View>
         </View>
       </View>
-      <Rating />
+      {rating && <Rating />}
+      {items && (
+        <Text style={{...Texts.regular1, fontSize: 13}}>{14} Items</Text>
+      )}
     </TouchableOpacity>
   );
 };

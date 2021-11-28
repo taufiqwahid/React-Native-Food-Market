@@ -7,9 +7,13 @@ import Home from './Home';
 import Order from './Order';
 import Profile from './Profile';
 import FoodDetails from './FoodDetail';
+import OrderSummary from './OrderSummary';
 
 //
 export {SplashScreen, NextSignUp, SignIn, SignUp, SuccessSignUp};
 
 // Main App
-export {Home, Order, Profile, FoodDetails};
+export {Home, Order, Profile};
+
+//
+export {FoodDetails, OrderSummary};
