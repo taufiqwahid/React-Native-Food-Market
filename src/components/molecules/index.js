@@ -7,8 +7,9 @@ import ListItemFood from './ListItemFood';
 import ListItemText from './ListItemText';
 import Rating from './Rating';
 import TabViewFood from './TabViewFood';
+import EmptyOrder from './EmptyOrder';
 
 //
 export {Header, BottomNavigator, Rating, Counter, ListItemText};
 //
-export {HomeProfile, FoodCard, ListItemFood, TabViewFood};
+export {HomeProfile, FoodCard, ListItemFood, TabViewFood, EmptyOrder};
