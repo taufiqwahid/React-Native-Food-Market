@@ -34,7 +34,7 @@ const EmptyOrder = () => {
             text="Find Foods"
             onPress={() =>
               navigation.replace('MainApp', {
-                screen: 'Home',
+                screen: 'HomeStackScreen',
               })
             }
           />

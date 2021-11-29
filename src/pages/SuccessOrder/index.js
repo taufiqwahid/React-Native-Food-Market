@@ -33,7 +33,7 @@ const SuccessOrder = ({navigation}) => {
             text="Order Other Foods"
             onPress={() =>
               navigation.replace('MainApp', {
-                screen: 'Home',
+                screen: 'HomeStackScreen',
               })
             }
           />
@@ -43,7 +43,7 @@ const SuccessOrder = ({navigation}) => {
               color={Colors.grey}
               onPress={() =>
                 navigation.replace('MainApp', {
-                  screen: 'Order',
+                  screen: 'OrderStackScreen',
                 })
               }
             />
