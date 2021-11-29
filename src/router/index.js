@@ -7,6 +7,7 @@ import {
   Home,
   NextSignUp,
   Order,
+  OrderDetail,
   OrderSummary,
   Profile,
   SignIn,
@@ -43,6 +44,7 @@ const Router = () => {
       <Stack.Screen name="FoodDetail" component={FoodDetails} />
       <Stack.Screen name="OrderSummary" component={OrderSummary} />
       <Stack.Screen name="SuccessOrder" component={SuccessOrder} />
+      <Stack.Screen name="OrderDetail" component={OrderDetail} />
     </Stack.Navigator>
   );
 };

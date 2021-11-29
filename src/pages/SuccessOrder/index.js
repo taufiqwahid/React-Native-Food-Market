@@ -31,7 +31,11 @@ const SuccessOrder = ({navigation}) => {
         <View style={{width: 300, alignSelf: 'center'}}>
           <Button
             text="Order Other Foods"
-            onPress={() => navigation.replace('MainApp ')}
+            onPress={() =>
+              navigation.replace('MainApp', {
+                screen: 'Home',
+              })
+            }
           />
           <View style={{marginTop: 16}}>
             <Button

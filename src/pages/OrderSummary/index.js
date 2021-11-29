@@ -1,13 +1,8 @@
 import React from 'react';
 import {ScrollView, StyleSheet, Text, View} from 'react-native';
 import {FoodDummy1} from '../../assets';
-import {
-  Button,
-  Gap,
-  Header,
-  ListItemFood,
-  ListItemText,
-} from '../../components';
+import {Button, Gap, Header, ListItemText} from '../../components';
+import ListItemFood from '../../components/molecules/ListItemFood';
 import {Colors} from '../../utils/colors';
 import {Texts} from '../../utils/texts';
 
