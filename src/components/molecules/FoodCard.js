@@ -12,8 +12,8 @@ const FoodCard = ({image}) => {
       style={{
         backgroundColor: '#fff',
         borderRadius: 8,
-        width: 200,
-        height: 210,
+        width: 180,
+        height: 190,
         marginRight: 24,
         marginVertical: 24,
         overflow: 'hidden',
@@ -33,8 +33,8 @@ const FoodCard = ({image}) => {
         style={{
           borderTopLeftRadius: 8,
           borderTopRightRadius: 8,
-          width: 200,
-          height: 140,
+          width: 180,
+          height: 120,
           resizeMode: 'cover',
         }}
       />

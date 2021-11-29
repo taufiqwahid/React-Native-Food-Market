@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
+import {StyleSheet, TouchableOpacity, View} from 'react-native';
 import {
   IcHomeOff,
   IcHomeOn,
@@ -11,23 +11,35 @@ import {
 
 const Icon = ({label, focus}) => {
   switch (label) {
-    case 'Home':
-      return focus ? <IcHomeOn /> : <IcHomeOff />;
+    case 'HomeStackScreen':
+      return focus ? <IcHomeOn height={25} /> : <IcHomeOff height={25} />;
 
-    case 'Order':
-      return focus ? <IcOrderOn /> : <IcOrderOff />;
+    case 'OrderStackScreen':
+      return focus ? <IcOrderOn height={25} /> : <IcOrderOff height={25} />;
 
-    case 'Profile':
-      return focus ? <IcProfileOn /> : <IcProfileOff />;
+    case 'ProfileStackScreen':
+      return focus ? <IcProfileOn height={25} /> : <IcProfileOff height={25} />;
 
     default:
-      return focus ? <IcHomeOn /> : <IcHomeOff />;
+      return focus ? <IcHomeOn height={25} /> : <IcHomeOff height={25} />;
   }
 };
 
 const BottomNavigator = ({state, descriptors, navigation}) => {
   return (
-    <View style={{flexDirection: 'row'}}>
+    <View
+      style={{
+        flexDirection: 'row',
+        shadowColor: '#000',
+        shadowOffset: {
+          width: 0,
+          height: 4,
+        },
+        shadowOpacity: 0.3,
+        shadowRadius: 4.65,
+        top: 1,
+        elevation: 8,
+      }}>
       {state.routes.map((route, index) => {
         const {options} = descriptors[route.key];
         const label =
@@ -61,6 +73,7 @@ const BottomNavigator = ({state, descriptors, navigation}) => {
 
         return (
           <TouchableOpacity
+            activeOpacity={0.5}
             key={index}
             accessibilityRole="button"
             accessibilityState={isFocused ? {selected: true} : {}}

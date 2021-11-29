@@ -6,7 +6,7 @@ import ListItemFood from '../../components/molecules/ListItemFood';
 import {Colors} from '../../utils/colors';
 import {Texts} from '../../utils/texts';
 
-const OrderSummary = ({navigation}) => {
+const OrderDetail = ({navigation}) => {
   return (
     <View style={{backgroundColor: Colors.background, flex: 1}}>
       <Header title="Payment" subTitle="You deserve better meal" onBack />
@@ -57,20 +57,35 @@ const OrderSummary = ({navigation}) => {
               <ListItemText textLeft="House No." textRight="A5 Hook" />
               <ListItemText textLeft="City" textRight="Bandung" />
             </View>
+            <Gap color={Colors.background} height={24} />
+
+            <View
+              style={{
+                backgroundColor: '#fff',
+                padding: 24,
+              }}>
+              <Text style={styles.listRight}>Deliver to:</Text>
+              <ListItemText textLeft="#FM209391" total textRight="Paid" />
+            </View>
           </View>
         </View>
       </ScrollView>
       <View style={{marginVertical: 24}}>
         <Button
-          text="Checkout Now"
-          onPress={() => navigation.replace('SuccessOrder')}
+          text="Cancel My Order"
+          color={Colors.red}
+          onPress={() =>
+            navigation.replace('MainApp', {
+              screen: 'OrderStackScreen',
+            })
+          }
         />
       </View>
     </View>
   );
 };
 
-export default OrderSummary;
+export default OrderDetail;
 
 const styles = StyleSheet.create({
   listLeft: {...Texts.regular1},

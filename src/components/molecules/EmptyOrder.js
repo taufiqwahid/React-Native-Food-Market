@@ -1,11 +1,12 @@
+import {useNavigation} from '@react-navigation/core';
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import {IlSuccessOrder} from '../../assets';
-import {Button, Gap} from '../../components';
-import {Colors} from '../../utils/colors';
+import {Button, Gap} from '..';
+import {IlEmptyOrder} from '../../assets';
 import {Texts} from '../../utils/texts';
 
-const SuccessOrder = ({navigation}) => {
+const EmptyOrder = () => {
+  const navigation = useNavigation();
   return (
     <View
       style={{
@@ -15,14 +16,14 @@ const SuccessOrder = ({navigation}) => {
         justifyContent: 'center',
       }}>
       <View style={{alignItems: 'center'}}>
-        <IlSuccessOrder />
+        <IlEmptyOrder />
         <Gap height={24} />
         <View style={{marginHorizontal: '20%'}}>
           <Text style={{...Texts.regular2, textAlign: 'center', fontSize: 20}}>
-            You’ve Made Order
+            Ouch! Hungry
           </Text>
           <Text style={{...Texts.regular1, textAlign: 'center'}}>
-            Just stay at home while we are preparing your best foods
+            Seems like you have not ordered any food yet
           </Text>
         </View>
         <Gap height={24} />
@@ -30,30 +31,19 @@ const SuccessOrder = ({navigation}) => {
       <View>
         <View style={{width: 300, alignSelf: 'center'}}>
           <Button
-            text="Order Other Foods"
+            text="Find Foods"
             onPress={() =>
               navigation.replace('MainApp', {
                 screen: 'HomeStackScreen',
               })
             }
           />
-          <View style={{marginTop: 16}}>
-            <Button
-              text="View My Order"
-              color={Colors.grey}
-              onPress={() =>
-                navigation.replace('MainApp', {
-                  screen: 'OrderStackScreen',
-                })
-              }
-            />
-          </View>
         </View>
       </View>
     </View>
   );
 };
 
-export default SuccessOrder;
+export default EmptyOrder;
 
 const styles = StyleSheet.create({});

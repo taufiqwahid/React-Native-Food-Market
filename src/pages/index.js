@@ -9,10 +9,11 @@ import SignUp from './SignUp';
 import SplashScreen from './SplashScreen';
 import SuccessOrder from './SuccessOrder';
 import SuccessSignUp from './SuccessSignUp';
+import OrderDetail from './OrderDetail';
 
 //
 export {SplashScreen, NextSignUp, SignIn, SignUp, SuccessSignUp};
 // Main App
 export {Home, Order, Profile};
 //
-export {FoodDetails, OrderSummary, SuccessOrder};
+export {FoodDetails, OrderSummary, SuccessOrder, OrderDetail};

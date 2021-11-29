@@ -30,7 +30,11 @@ const SuccessSignUp = ({navigation}) => {
         <View style={{width: 300, alignSelf: 'center'}}>
           <Button
             text="Find Foods"
-            onPress={() => navigation.replace('MainApp')}
+            onPress={() =>
+              navigation.replace('MainApp', {
+                screen: 'HomeStackScreen',
+              })
+            }
           />
         </View>
       </View>

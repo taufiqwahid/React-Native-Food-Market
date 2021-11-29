@@ -7,6 +7,7 @@ import {
   Home,
   NextSignUp,
   Order,
+  OrderDetail,
   OrderSummary,
   Profile,
   SignIn,
@@ -19,14 +20,40 @@ import {
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
+const HomeStack = createNativeStackNavigator();
+const OrderStack = createNativeStackNavigator();
+const ProfileStack = createNativeStackNavigator();
+
+const HomeStackScreen = () => {
+  return (
+    <HomeStack.Navigator screenOptions={{headerShown: false}}>
+      <HomeStack.Screen name="Home" component={Home} />
+    </HomeStack.Navigator>
+  );
+};
+const OrderStackScreen = () => {
+  return (
+    <OrderStack.Navigator screenOptions={{headerShown: false}}>
+      <OrderStack.Screen name="Order" component={Order} />
+    </OrderStack.Navigator>
+  );
+};
+const ProfileStackScreen = () => {
+  return (
+    <ProfileStack.Navigator screenOptions={{headerShown: false}}>
+      <ProfileStack.Screen name="Profile" component={Profile} />
+    </ProfileStack.Navigator>
+  );
+};
+
 const MainApp = () => {
   return (
     <Tab.Navigator
       tabBar={props => <BottomNavigator {...props} />}
       screenOptions={{headerShown: false}}>
-      <Tab.Screen name="Home" component={Home} />
-      <Tab.Screen name="Order" component={Order} />
-      <Tab.Screen name="Profile" component={Profile} />
+      <Tab.Screen name="HomeStackScreen" component={HomeStackScreen} />
+      <Tab.Screen name="OrderStackScreen" component={OrderStackScreen} />
+      <Tab.Screen name="ProfileStackScreen" component={ProfileStackScreen} />
     </Tab.Navigator>
   );
 };
@@ -43,6 +70,7 @@ const Router = () => {
       <Stack.Screen name="FoodDetail" component={FoodDetails} />
       <Stack.Screen name="OrderSummary" component={OrderSummary} />
       <Stack.Screen name="SuccessOrder" component={SuccessOrder} />
+      <Stack.Screen name="OrderDetail" component={OrderDetail} />
     </Stack.Navigator>
   );
 };
