@@ -1,27 +1,93 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {ScrollView, StyleSheet, Text, View} from 'react-native';
+import {FoodDummy1} from '../../assets';
+import {Button, Gap, Header, ListItemText} from '../../components';
+import ListItemFood from '../../components/molecules/ListItemFood';
+import {Colors} from '../../utils/colors';
+import {Texts} from '../../utils/texts';
 
-const OrderDetail = () => {
+const OrderDetail = ({navigation}) => {
   return (
-    <View>
-      <Text>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Necessitatibus
-        adipisci quo cumque voluptas doloribus blanditiis rem eos, quibusdam
-        unde corrupti temporibus labore facere voluptatum a quaerat fuga illum!
-        Similique inventore vel minima quod ipsa quibusdam? Nam nulla dolorum,
-        provident corporis perferendis iusto quis voluptates, suscipit error
-        consequuntur mollitia doloremque culpa, libero praesentium? Rerum
-        laborum excepturi adipisci eaque nihil. Fugit in, provident quasi,
-        numquam, commodi non ipsam quaerat laboriosam fugiat laudantium
-        veritatis? Amet, maxime eum ea similique facilis fugiat expedita nihil
-        tempora modi quam quaerat? Aliquam eius, qui nesciunt dolores quasi
-        totam eveniet dolorem, tempore accusamus quis quidem blanditiis ab
-        ipsum.
-      </Text>
+    <View style={{backgroundColor: Colors.background, flex: 1}}>
+      <Header title="Payment" subTitle="You deserve better meal" onBack />
+      <ScrollView>
+        <Gap color={Colors.background} height={24} />
+        <View style={{backgroundColor: '#fff'}}>
+          <Text
+            style={{...styles.listRight, marginHorizontal: 24, marginTop: 15}}>
+            Item Ordered
+          </Text>
+          <ListItemFood image={FoodDummy1} items />
+        </View>
+
+        <View style={{justifyContent: 'space-between', flex: 1}}>
+          <View>
+            <View
+              style={{
+                backgroundColor: '#fff',
+                padding: 24,
+                paddingTop: 10,
+              }}>
+              <Text style={styles.listRight}>Details Transaction</Text>
+
+              <ListItemText
+                textLeft="Cherry Healthy"
+                textRight="IDR 18.390.000"
+              />
+              <ListItemText textLeft="Driver" textRight="IDR 50.000" />
+              <ListItemText textLeft="Tax 10%" textRight="IDR 1.800.390" />
+              <ListItemText
+                textLeft="Total Price"
+                textRight="IDR 390.803.000"
+                total
+              />
+            </View>
+
+            <Gap color={Colors.background} height={24} />
+
+            <View
+              style={{
+                backgroundColor: '#fff',
+                padding: 24,
+              }}>
+              <Text style={styles.listRight}>Deliver to:</Text>
+              <ListItemText textLeft="Name" textRight="Angga Risky" />
+              <ListItemText textLeft="Phone No." textRight="0822 0819 9688" />
+              <ListItemText textLeft="Address" textRight="Setra Duta Palima" />
+              <ListItemText textLeft="House No." textRight="A5 Hook" />
+              <ListItemText textLeft="City" textRight="Bandung" />
+            </View>
+            <Gap color={Colors.background} height={24} />
+
+            <View
+              style={{
+                backgroundColor: '#fff',
+                padding: 24,
+              }}>
+              <Text style={styles.listRight}>Deliver to:</Text>
+              <ListItemText textLeft="#FM209391" total textRight="Paid" />
+            </View>
+          </View>
+        </View>
+      </ScrollView>
+      <View style={{marginVertical: 24}}>
+        <Button
+          text="Cancel My Order"
+          color={Colors.red}
+          onPress={() =>
+            navigation.replace('MainApp', {
+              screen: 'OrderStackScreen',
+            })
+          }
+        />
+      </View>
     </View>
   );
 };
 
 export default OrderDetail;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  listLeft: {...Texts.regular1},
+  listRight: {...Texts.regular1, color: Colors.black},
+});

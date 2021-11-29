@@ -73,6 +73,7 @@ const BottomNavigator = ({state, descriptors, navigation}) => {
 
         return (
           <TouchableOpacity
+            activeOpacity={0.5}
             key={index}
             accessibilityRole="button"
             accessibilityState={isFocused ? {selected: true} : {}}
