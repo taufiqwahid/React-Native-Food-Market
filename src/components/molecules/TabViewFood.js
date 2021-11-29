@@ -1,42 +1,114 @@
+import {useNavigation} from '@react-navigation/core';
 import React from 'react';
 import {ScrollView, StyleSheet, Text} from 'react-native';
 import {SceneMap, TabBar, TabView} from 'react-native-tab-view';
-import {ListItemFood} from '.';
 import {Gap} from '..';
 import {FoodDummy1, FoodDummy2, FoodDummy3} from '../../assets';
 import {Colors} from '../../utils/colors';
 import {Texts} from '../../utils/texts';
+import ListItemFood from './ListItemFood';
 
-const FirstRoute = () => (
-  <ScrollView
-    style={{flex: 1, backgroundColor: '#fff'}}
-    showsVerticalScrollIndicator={false}>
-    <Gap height={8} />
-    <ListItemFood rating image={FoodDummy1} />
-    <ListItemFood rating image={FoodDummy2} />
-    <ListItemFood rating image={FoodDummy3} />
-    <ListItemFood rating image={FoodDummy1} />
-  </ScrollView>
-);
+const NewState = () => {
+  const navigation = useNavigation();
+  return (
+    <ScrollView
+      style={{flex: 1, backgroundColor: '#fff'}}
+      showsVerticalScrollIndicator={false}>
+      <Gap height={8} />
+      <ListItemFood
+        onPress={() => navigation.navigate('FoodDetail')}
+        rating
+        image={FoodDummy1}
+      />
+      <ListItemFood
+        onPress={() => navigation.navigate('FoodDetail')}
+        rating
+        image={FoodDummy2}
+      />
+      <ListItemFood
+        onPress={() => navigation.navigate('FoodDetail')}
+        rating
+        image={FoodDummy3}
+      />
+      <ListItemFood
+        onPress={() => navigation.navigate('FoodDetail')}
+        rating
+        image={FoodDummy1}
+      />
+    </ScrollView>
+  );
+};
+const Popular = () => {
+  const navigation = useNavigation();
+  return (
+    <ScrollView
+      style={{flex: 1, backgroundColor: '#fff'}}
+      showsVerticalScrollIndicator={false}>
+      <Gap height={8} />
+      <ListItemFood
+        onPress={() => navigation.navigate('FoodDetail')}
+        rating
+        image={FoodDummy1}
+      />
+      <ListItemFood
+        onPress={() => navigation.navigate('FoodDetail')}
+        rating
+        image={FoodDummy2}
+      />
+      <ListItemFood
+        onPress={() => navigation.navigate('FoodDetail')}
+        rating
+        image={FoodDummy3}
+      />
+      <ListItemFood
+        onPress={() => navigation.navigate('FoodDetail')}
+        rating
+        image={FoodDummy1}
+      />
+    </ScrollView>
+  );
+};
 
-const SecondRoute = () => (
-  <ScrollView
-    style={{flex: 1, backgroundColor: '#fff'}}
-    showsVerticalScrollIndicator={false}>
-    <Gap height={8} />
-    <ListItemFood rating image={FoodDummy3} />
-    <ListItemFood rating image={FoodDummy2} />
-    <ListItemFood rating image={FoodDummy1} />
-    <ListItemFood rating image={FoodDummy2} />
-    <ListItemFood rating image={FoodDummy1} />
-  </ScrollView>
-);
+const Recommended = () => {
+  const navigation = useNavigation();
+  return (
+    <ScrollView
+      style={{flex: 1, backgroundColor: '#fff'}}
+      showsVerticalScrollIndicator={false}>
+      <Gap height={8} />
+      <ListItemFood
+        onPress={() => navigation.navigate('FoodDetail')}
+        rating
+        image={FoodDummy3}
+      />
+      <ListItemFood
+        onPress={() => navigation.navigate('FoodDetail')}
+        rating
+        image={FoodDummy2}
+      />
+      <ListItemFood
+        onPress={() => navigation.navigate('FoodDetail')}
+        rating
+        image={FoodDummy1}
+      />
+      <ListItemFood
+        onPress={() => navigation.navigate('FoodDetail')}
+        rating
+        image={FoodDummy2}
+      />
+      <ListItemFood
+        onPress={() => navigation.navigate('FoodDetail')}
+        rating
+        image={FoodDummy1}
+      />
+    </ScrollView>
+  );
+};
+
 const renderScene = SceneMap({
-  1: FirstRoute,
-  2: SecondRoute,
-
-  3: FirstRoute,
-  4: FirstRoute,
+  1: NewState,
+  2: Popular,
+  3: Recommended,
 });
 
 const renderTabBar = props => (
