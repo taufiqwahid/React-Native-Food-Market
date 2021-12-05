@@ -1,17 +1,26 @@
 import axios from 'axios';
+import {isEmpty} from 'lodash';
 import React, {useState} from 'react';
-import {ScrollView, StyleSheet, Text, View} from 'react-native';
-import {useSelector} from 'react-redux';
-import {useDispatch} from 'react-redux';
+import {
+  Image,
+  ScrollView,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+} from 'react-native';
+import {useDispatch, useSelector} from 'react-redux';
+import {ProfileDummy} from '../../assets';
 import {Button, Gap, Header, ListItem, TextInput} from '../../components';
 import {com} from '../../config/API';
 import {Colors} from '../../utils/colors';
-import {Texts} from '../../utils/texts';
+import openGallery from '../../utils/openGallery';
+import toastMessage from '../../utils/toastMessage';
 
 const NextSignUp = ({navigation}) => {
   const register = useSelector(state => state.registerReducer);
   const userReducer = useSelector(state => state.userReducer);
   const dispatch = useDispatch();
+  const [photo, setPhoto] = useState();
   const [form, setForm] = useState({
     address: '',
     city: 'makassar',
@@ -25,14 +34,50 @@ const NextSignUp = ({navigation}) => {
 
   const onSubmit = () => {
     dispatch({type: 'SET_NEXT_REGISTER', value: form});
+    dispatch({type: 'SET_LOADING', value: true});
+    console.log(isEmpty(photo));
+    if (isEmpty(photo)) {
+      dispatch({type: 'SET_LOADING', value: false});
+      toastMessage('Tambahkan Foto terlebih dahulu');
+    } else {
+      axios
+        .post(com.register, register)
+        .then(res => {
+          dispatch({type: 'SET_USER', value: res.data.data});
+          const token = res.data.data;
+          const formData = new FormData();
+          console.log(token);
+          formData.append('file', {
+            uri: photo.uri,
+            name: photo.fileName,
+            type: 'image/*',
+          });
 
-    axios
-      .post(com.register, register)
-      .then(res => {
-        dispatch({type: 'SET_USER', value: res.data.data});
-      })
-      .catch(err => console.log(err.response));
+          axios
+            .post(com.uploadPhoto, formData, {
+              headers: {
+                Authorization: `Bearer 14571|DwOjgzsfmWeLg79HCwpSByWvM0KXTODCkrjggGjl`,
+                'Content-Type': 'multipart/form-data',
+              },
+            })
+            .then(res => {
+              toastMessage('Berhasil Register', 'success');
+              dispatch({type: 'SET_LOADING', value: false});
+              navigation.replace('MainApp', {screen: 'HomeStackScreen'});
+            })
+            .catch(err => {
+              toastMessage(err?.response?.data?.message);
+              dispatch({type: 'SET_LOADING', value: false});
+            });
+        })
+        .catch(err => {
+          toastMessage(err?.response?.data?.message);
+          dispatch({type: 'SET_LOADING', value: false});
+        });
+    }
   };
+
+  console.log('userReducer', userReducer);
 
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
@@ -53,7 +98,8 @@ const NextSignUp = ({navigation}) => {
                 alignItems: 'center',
                 borderStyle: 'dashed',
               }}>
-              <View
+              <TouchableOpacity
+                onPress={() => openGallery(setPhoto)}
                 style={{
                   borderRadius: 100,
                   height: 90,
@@ -62,11 +108,18 @@ const NextSignUp = ({navigation}) => {
                   alignItems: 'center',
                   backgroundColor: '#F0F0F0',
                 }}>
-                <Text
-                  style={{...Texts.regular1, padding: 10, textAlign: 'center'}}>
-                  Add Photo
-                </Text>
-              </View>
+                <Image
+                  source={isEmpty(photo) ? ProfileDummy : {uri: photo?.uri}}
+                  style={{
+                    borderRadius: 100,
+                    height: 90,
+                    width: 90,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    backgroundColor: '#F0F0F0',
+                  }}
+                />
+              </TouchableOpacity>
             </View>
           </View>
           <TextInput

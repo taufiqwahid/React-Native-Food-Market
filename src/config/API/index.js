@@ -11,4 +11,7 @@ axios.defaults.baseURL = 'http://foodmarket-backend.buildwithangga.id/api/';
 export const com = {
   login: 'login',
   register: 'register',
+  logout: 'logout',
+  uploadPhoto: 'user/photo',
+  updateUser: 'user',
 };
