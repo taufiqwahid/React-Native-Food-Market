@@ -1,15 +1,44 @@
-import React from 'react';
+import axios from 'axios';
+import React, {useState} from 'react';
 import {ScrollView, StyleSheet, Text, View} from 'react-native';
+import {useSelector} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import {Button, Gap, Header, ListItem, TextInput} from '../../components';
+import {com} from '../../config/API';
 import {Colors} from '../../utils/colors';
 import {Texts} from '../../utils/texts';
 
 const NextSignUp = ({navigation}) => {
+  const register = useSelector(state => state.registerReducer);
+  const userReducer = useSelector(state => state.userReducer);
+  const dispatch = useDispatch();
+  const [form, setForm] = useState({
+    address: '',
+    city: 'makassar',
+    houseNumber: '',
+    phoneNumber: '',
+  });
+
+  const formValue = (type, value) => {
+    return setForm({...form, [type]: value});
+  };
+
+  const onSubmit = () => {
+    dispatch({type: 'SET_NEXT_REGISTER', value: form});
+
+    axios
+      .post(com.register, register)
+      .then(res => {
+        dispatch({type: 'SET_USER', value: res.data.data});
+      })
+      .catch(err => console.log(err.response));
+  };
+
   return (
-    <View style={{backgroundColor: Colors.background, flex: 1}}>
-      <Header title="Address" subTitle="Make sure it’s valid" onBack />
-      <Gap color={Colors.background} height={24} />
-      <ScrollView showsVerticalScrollIndicator={false}>
+    <ScrollView showsVerticalScrollIndicator={false}>
+      <View style={{backgroundColor: Colors.background, flex: 1}}>
+        <Header title="Address" subTitle="Make sure it’s valid" onBack />
+        <Gap color={Colors.background} height={24} />
         <Gap height={24} />
         <View style={{backgroundColor: '#fff', flex: 1}}>
           <View style={{justifyContent: 'center', alignItems: 'center'}}>
@@ -40,19 +69,36 @@ const NextSignUp = ({navigation}) => {
               </View>
             </View>
           </View>
-          <TextInput text="Phone No." placeholder="Type your phone number" />
-          <TextInput text="Address" placeholder="Type your address" />
-          <TextInput text="House No." placeholder="Type your house number" />
-          <ListItem text="City" />
-
-          <Button
-            text="Sign Up Now"
-            onPress={() => navigation.navigate('SuccessSignUp')}
+          <TextInput
+            text="Phone No."
+            placeholder="Type your phone number"
+            value={form.phoneNumber}
+            onChangeText={text => formValue('phoneNumber', text)}
           />
+          <TextInput
+            text="Address"
+            placeholder="Type your address"
+            value={form.address}
+            onChangeText={text => formValue('address', text)}
+          />
+          <TextInput
+            text="House No."
+            placeholder="Type your house number"
+            value={form.houseNumber}
+            onChangeText={text => formValue('houseNumber', text)}
+          />
+          <ListItem
+            text="City"
+            value={form.city}
+            selectedValue={form.city}
+            onValueChange={value => formValue('city', value)}
+          />
+
+          <Button text="Sign Up Now" onPress={onSubmit} />
           <Gap height={24} />
         </View>
-      </ScrollView>
-    </View>
+      </View>
+    </ScrollView>
   );
 };
 

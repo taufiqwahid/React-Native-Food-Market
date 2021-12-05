@@ -3,23 +3,12 @@ import {StyleSheet, Text, TextInput, View} from 'react-native';
 import {Colors} from '../../utils/colors';
 import {Texts} from '../../utils/texts';
 
-const Texinput = ({
-  text,
-  placeholder,
-  onChangeText,
-  value,
-  keyboardType,
-  secureTextEntry,
-}) => {
+const Texinput = props => {
   return (
     <View style={{marginHorizontal: 24, marginBottom: 24}}>
-      <Text style={{...Texts.regular2}}>{text}</Text>
+      <Text style={{...Texts.regular2}}>{props.text}</Text>
       <TextInput
-        onChangeText={onChangeText}
-        value={value}
-        keyboardType={keyboardType}
-        placeholder={placeholder}
-        secureTextEntry={secureTextEntry}
+        {...props}
         style={{
           ...Texts.regular1,
           borderRadius: 10,
