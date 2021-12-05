@@ -61,7 +61,6 @@ const MainApp = () => {
 const Router = () => {
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
-      <Stack.Screen name="MainApp" component={MainApp} />
       <Stack.Screen name="SplashScreen" component={SplashScreen} />
       <Stack.Screen name="SignIn" component={SignIn} />
       <Stack.Screen name="SignUp" component={SignUp} />
@@ -71,6 +70,7 @@ const Router = () => {
       <Stack.Screen name="OrderSummary" component={OrderSummary} />
       <Stack.Screen name="SuccessOrder" component={SuccessOrder} />
       <Stack.Screen name="OrderDetail" component={OrderDetail} />
+      <Stack.Screen name="MainApp" component={MainApp} />
     </Stack.Navigator>
   );
 };

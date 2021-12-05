@@ -16,8 +16,8 @@ const ListItem = ({onValueChange, selectedValue, text}) => {
           borderWidth: 1,
         }}>
         <Picker selectedValue={selectedValue} onValueChange={onValueChange}>
-          <Picker.Item label="Java" value="java" />
-          <Picker.Item label="JavaScript" value="js" />
+          <Picker.Item label="Makassar" value="makassar" />
+          <Picker.Item label="Gowa" value="gowa" />
         </Picker>
       </View>
     </View>
