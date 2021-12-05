@@ -8,6 +8,7 @@ const Texinput = props => {
     <View style={{marginHorizontal: 24, marginBottom: 24}}>
       <Text style={{...Texts.regular2}}>{props.text}</Text>
       <TextInput
+        autoCapitalize="none"
         {...props}
         style={{
           ...Texts.regular1,

@@ -5,7 +5,6 @@ const initialReducer = {
 };
 
 export const userReducer = (state = initialReducer, action) => {
-  console.log('action', action);
   if (action.type === 'SET_USER') {
     return {
       ...state,

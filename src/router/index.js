@@ -61,9 +61,9 @@ const MainApp = () => {
 const Router = () => {
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
-      <Stack.Screen name="SignUp" component={SignUp} />
       <Stack.Screen name="SplashScreen" component={SplashScreen} />
       <Stack.Screen name="SignIn" component={SignIn} />
+      <Stack.Screen name="SignUp" component={SignUp} />
       <Stack.Screen name="NextSignUp" component={NextSignUp} />
       <Stack.Screen name="SuccessSignUp" component={SuccessSignUp} />
       <Stack.Screen name="FoodDetail" component={FoodDetails} />

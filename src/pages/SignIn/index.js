@@ -1,22 +1,33 @@
 import axios from 'axios';
 import React, {useState} from 'react';
 import {StyleSheet, View} from 'react-native';
+import {useDispatch} from 'react-redux';
 import {Button, Gap, Header, TextInput} from '../../components';
 import {com} from '../../config/API';
 import {Colors} from '../../utils/colors';
+import {toastMessage} from '../../utils/toastMessage';
 
 const SignIn = ({navigation}) => {
-  const [form, setForm] = useState({});
+  const [form, setForm] = useState({
+    email: 'upi@gmail.com',
+    password: '123456789',
+  });
+  const dispatch = useDispatch();
 
   const onSubmit = () => {
+    dispatch({type: 'SET_LOADING', value: true});
     axios
       .post(com.login, form)
       .then(res => {
-        console.log('BERHASILLLLL', res);
+        console.log(res);
+        dispatch({type: 'SET_USER', value: res?.data?.data});
         navigation.replace('MainApp', {screen: 'HomeStackScreen'});
+        dispatch({type: 'SET_LOADING', value: false});
       })
       .catch(err => {
-        console.log('err', err.response);
+        console.log(err?.response);
+        toastMessage(err?.response?.data?.message);
+        dispatch({type: 'SET_LOADING', value: false});
       });
   };
 
