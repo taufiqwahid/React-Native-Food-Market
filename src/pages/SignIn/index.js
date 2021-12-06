@@ -1,18 +1,21 @@
 import axios from 'axios';
 import React, {useState} from 'react';
 import {StyleSheet, View} from 'react-native';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {Button, Gap, Header, TextInput} from '../../components';
 import {com} from '../../config/API';
 import {Colors} from '../../utils/colors';
 import toastMessage from '../../utils/toastMessage';
 
 const SignIn = ({navigation}) => {
+  const selector = useSelector(state => console.log('state', state));
+  console.log('selector', selector);
   const [form, setForm] = useState({
     email: 'upi@gmail.com',
     password: '123456789',
   });
   const dispatch = useDispatch();
+
   const onSubmit = () => {
     dispatch({type: 'SET_LOADING', value: true});
     axios
