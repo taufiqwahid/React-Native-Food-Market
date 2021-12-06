@@ -12,6 +12,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {ProfileDummy} from '../../assets';
 import {Button, Gap, Header, ListItem, TextInput} from '../../components';
 import {com} from '../../config/API';
+import {setLoading} from '../../redux/action/global';
 import {Colors} from '../../utils/colors';
 import openGallery from '../../utils/openGallery';
 import toastMessage from '../../utils/toastMessage';
@@ -32,17 +33,17 @@ const NextSignUp = ({navigation}) => {
     return setForm({...form, [type]: value});
   };
 
-  const onSubmit = () => {
+  const onSubmit = async () => {
     dispatch({type: 'SET_NEXT_REGISTER', value: form});
-    dispatch({type: 'SET_LOADING', value: true});
+    dispatch(setLoading(true));
     console.log(isEmpty(photo));
     if (isEmpty(photo)) {
-      dispatch({type: 'SET_LOADING', value: false});
+      dispatch(setLoading(false));
       toastMessage('Tambahkan Foto terlebih dahulu');
     } else {
-      axios
+      await axios
         .post(com.register, register)
-        .then(res => {
+        .then(async res => {
           dispatch({type: 'SET_USER', value: res.data.data});
           const token = res.data.data;
           const formData = new FormData();
@@ -53,26 +54,21 @@ const NextSignUp = ({navigation}) => {
             type: 'image/*',
           });
 
-          axios
-            .post(com.uploadPhoto, formData, {
-              headers: {
-                Authorization: `Bearer 14571|DwOjgzsfmWeLg79HCwpSByWvM0KXTODCkrjggGjl`,
-                'Content-Type': 'multipart/form-data',
-              },
-            })
+          await axios
+            .post(com.uploadPhoto, formData)
             .then(res => {
               toastMessage('Berhasil Register', 'success');
-              dispatch({type: 'SET_LOADING', value: false});
-              navigation.replace('MainApp', {screen: 'HomeStackScreen'});
+              dispatch(setLoading(false));
+              navigation.replace('SuccessSignUp');
             })
             .catch(err => {
               toastMessage(err?.response?.data?.message);
-              dispatch({type: 'SET_LOADING', value: false});
+              dispatch(setLoading(false));
             });
         })
         .catch(err => {
           toastMessage(err?.response?.data?.message);
-          dispatch({type: 'SET_LOADING', value: false});
+          dispatch(setLoading(false));
         });
     }
   };
