@@ -3,7 +3,7 @@ import {Image, StyleSheet, Text, View} from 'react-native';
 import {ProfileDummy} from '../../assets';
 import {Texts} from '../../utils/texts';
 
-const HomeProfile = () => {
+const HomeProfile = ({photo}) => {
   return (
     <View
       style={{
@@ -19,7 +19,8 @@ const HomeProfile = () => {
         <Text style={{...Texts.regular1}}>Let’s get some foods</Text>
       </View>
       <Image
-        source={ProfileDummy}
+        resizeMode="cover"
+        source={photo ? {uri: photo} : ProfileDummy}
         style={{width: 50, height: 50, borderRadius: 10}}
       />
     </View>

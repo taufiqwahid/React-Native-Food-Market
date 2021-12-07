@@ -1,13 +1,16 @@
 import React from 'react';
 import {ScrollView, StyleSheet, View} from 'react-native';
+import {useSelector} from 'react-redux';
 import {FoodDummy1, FoodDummy2, FoodDummy3} from '../../assets';
 import {FoodCard, Gap, HomeProfile, TabViewFood} from '../../components';
 import {Colors} from '../../utils/colors';
 
 const Home = () => {
+  const userReducer = useSelector(state => state.userReducer);
+
   return (
     <View style={{backgroundColor: Colors.background, flex: 1}}>
-      <HomeProfile />
+      <HomeProfile photo={userReducer?.user?.profile_photo_url} />
 
       <View>
         <ScrollView
