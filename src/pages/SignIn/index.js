@@ -11,7 +11,8 @@ const SignIn = ({navigation}) => {
   const selector = useSelector(state => console.log('state', state));
   console.log('selector', selector);
   const [form, setForm] = useState({
-    email: 'upi@gmail.com',
+    // email: 'upi@gmail.com',
+    email: 'taufiq.wahid58@gmail.com',
     password: '123456789',
   });
   const dispatch = useDispatch();

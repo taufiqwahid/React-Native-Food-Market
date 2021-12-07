@@ -5,7 +5,7 @@ import {FoodDummy1, FoodDummy2, FoodDummy3} from '../../assets';
 import {FoodCard, Gap, HomeProfile, TabViewFood} from '../../components';
 import {Colors} from '../../utils/colors';
 
-const Home = () => {
+const Home = ({navigation}) => {
   const userReducer = useSelector(state => state.userReducer);
 
   return (
