@@ -5,6 +5,7 @@ import {persistReducer} from 'redux-persist';
 import {registerReducer} from './auth';
 import {globalReducer} from './global';
 import {userReducer} from './user';
+import {foodReducer} from './food';
 
 const persistConfig = {
   key: 'root',
@@ -16,6 +17,7 @@ const appReducer = combineReducers({
   globalReducer,
   registerReducer,
   userReducer,
+  foodReducer,
 });
 
 const rootReducer = (state, action) => {
