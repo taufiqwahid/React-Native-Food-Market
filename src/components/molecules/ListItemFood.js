@@ -2,14 +2,14 @@ import React from 'react';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {Rating} from '.';
 import {Colors} from '../../utils/colors';
-import {Texts} from '../../utils/texts';
-import NumberFormat from 'react-number-format';
 import FormatNumber from '../../utils/formatNumber';
+import {Texts} from '../../utils/texts';
 
 const ListItemFood = ({
   name,
   price,
   rate,
+  countItem,
   item,
   image,
   items,
@@ -41,7 +41,7 @@ const ListItemFood = ({
           <View style={{flexDirection: 'row'}}>
             {inProgress && (
               <Text style={{...Texts.regular1, fontSize: 13}}>
-                {14} Items .{' '}
+                {countItem} Items .{' '}
               </Text>
             )}
             <FormatNumber number={price} />
@@ -62,7 +62,7 @@ const ListItemFood = ({
         </View>
       )}
       {items && (
-        <Text style={{...Texts.regular1, fontSize: 13}}>{14} Items</Text>
+        <Text style={{...Texts.regular1, fontSize: 13}}>{countItem} Items</Text>
       )}
     </TouchableOpacity>
   );

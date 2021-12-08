@@ -8,9 +8,9 @@ const Rating = ({rate}) => {
     let star = [];
     for (let i = 0; i < 5; i++) {
       if (i < rate) {
-        star.push(<IcStarOn />);
+        star.push(<IcStarOn key={i} />);
       } else {
-        star.push(<IcStarOff />);
+        star.push(<IcStarOff key={i} />);
       }
     }
     return star;
