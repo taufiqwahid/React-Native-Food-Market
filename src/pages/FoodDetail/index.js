@@ -6,15 +6,45 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import {useSelector} from 'react-redux';
 import {IcBackWhite} from '../../assets';
 import {Button, Counter, Rating} from '../../components';
 import FormatNumber from '../../utils/formatNumber';
 import {Texts} from '../../utils/texts';
 
 const FoodDetails = ({navigation, route}) => {
-  const {picturePath, description, name, ingredients, price, rate} =
+  const {id, picturePath, description, name, ingredients, price, rate} =
     route.params;
   const [count, setCount] = useState(1);
+  const userReducer = useSelector(state => state.userReducer.user);
+
+  const onOrder = () => {
+    const driver = 10000;
+    const totalPrice = price * count;
+    const tax = (10 / 100) * totalPrice;
+    const includeTotal = totalPrice + tax + driver;
+
+    const data = {
+      item: {
+        id: id,
+        name: name,
+        price: price,
+        items: count,
+        image: picturePath,
+      },
+      transaction: {
+        name: name,
+        driver: driver,
+        tax: tax,
+        totalPrice: totalPrice,
+        includeTotal: includeTotal,
+      },
+      user: userReducer,
+    };
+
+    navigation.navigate('OrderSummary', data);
+  };
+
   return (
     <View style={{flex: 1}}>
       <ImageBackground
@@ -70,10 +100,7 @@ const FoodDetails = ({navigation, route}) => {
               number={price * count}
             />
           </View>
-          <Button
-            text="Order Now"
-            onPress={() => navigation.navigate('OrderSummary')}
-          />
+          <Button text="Order Now" onPress={onOrder} />
         </View>
       </View>
     </View>
