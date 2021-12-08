@@ -6,4 +6,5 @@ export const com = {
   updateUser: 'user',
   food: 'food',
   foodType: types => `food?types=${types}`,
+  checkout: 'checkout',
 };

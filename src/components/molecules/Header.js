@@ -3,8 +3,9 @@ import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {IcBack} from '../../assets/Icon';
 import {Texts} from '../../utils/texts';
 import {useNavigation} from '@react-navigation/native';
+import {CommonActions} from '@react-navigation/routers';
 
-const Header = ({title, subTitle, onBack}) => {
+const Header = ({title, subTitle, onBack, onCheckOut}) => {
   const navigation = useNavigation();
   return (
     <View
@@ -25,6 +26,22 @@ const Header = ({title, subTitle, onBack}) => {
           <IcBack />
         </TouchableOpacity>
       )}
+
+      {onCheckOut && (
+        <TouchableOpacity
+          style={{marginRight: 32}}
+          onPress={() => {
+            navigation.dispatch(
+              CommonActions.reset({
+                index: 0,
+                routes: [{name: 'SuccessOrder'}],
+              }),
+            );
+          }}>
+          <IcBack />
+        </TouchableOpacity>
+      )}
+
       <View>
         <Text style={{...Texts.regular2, fontSize: 22}}>{title}</Text>
         <Text style={{...Texts.regular1}}>{subTitle}</Text>
