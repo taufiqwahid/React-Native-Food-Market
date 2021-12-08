@@ -5,7 +5,7 @@ import {Rating} from '.';
 import {IcStarOff, IcStarOn} from '../../assets';
 import {Texts} from '../../utils/texts';
 
-const FoodCard = ({image}) => {
+const FoodCard = ({image, name, rate, item}) => {
   const navigation = useNavigation();
   return (
     <View
@@ -29,7 +29,7 @@ const FoodCard = ({image}) => {
         elevation: 3,
       }}>
       <Image
-        source={image}
+        source={{uri: image}}
         style={{
           borderTopLeftRadius: 8,
           borderTopRightRadius: 8,
@@ -39,10 +39,11 @@ const FoodCard = ({image}) => {
         }}
       />
       <View style={{marginLeft: 12}}>
-        <TouchableOpacity onPress={() => navigation.navigate('FoodDetail')}>
-          <Text style={{...Texts.regular2, marginTop: 12}}>Cherry Healthy</Text>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('FoodDetail', item)}>
+          <Text style={{...Texts.regular2, marginTop: 12}}>{name}</Text>
         </TouchableOpacity>
-        <Rating />
+        <Rating rate={rate} />
       </View>
     </View>
   );

@@ -3,8 +3,14 @@ import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {Rating} from '.';
 import {Colors} from '../../utils/colors';
 import {Texts} from '../../utils/texts';
+import NumberFormat from 'react-number-format';
+import FormatNumber from '../../utils/formatNumber';
 
 const ListItemFood = ({
+  name,
+  price,
+  rate,
+  item,
   image,
   items,
   rating,
@@ -26,22 +32,23 @@ const ListItemFood = ({
       }}>
       <View style={{flexDirection: 'row', alignItems: 'center'}}>
         <Image
-          source={image}
+          source={{uri: image}}
+          resizeMode="cover"
           style={{width: 60, height: 60, borderRadius: 8}}
         />
         <View style={{marginLeft: 12}}>
-          <Text style={{...Texts.regular2}}>Soup Bumil</Text>
+          <Text style={{...Texts.regular2}}>{name}</Text>
           <View style={{flexDirection: 'row'}}>
             {inProgress && (
               <Text style={{...Texts.regular1, fontSize: 13}}>
                 {14} Items .{' '}
               </Text>
             )}
-            <Text style={{...Texts.regular1, fontSize: 13}}>IDR 289.000</Text>
+            <FormatNumber number={price} />
           </View>
         </View>
       </View>
-      {rating && <Rating />}
+      {rating && <Rating rate={rate} />}
       {pastOrders && (
         <View>
           <Text style={{...Texts.regular1, fontSize: 10, color: Colors.grey}}>

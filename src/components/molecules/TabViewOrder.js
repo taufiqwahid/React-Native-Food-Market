@@ -15,65 +15,10 @@ const InProgress = () => {
       style={{flex: 1, backgroundColor: Colors.background}}
       showsVerticalScrollIndicator={false}>
       <Gap height={8} />
+
       <ListItemFood
         onPress={() => navigation.navigate('OrderDetail')}
         inProgress
-        image={FoodDummy1}
-      />
-      <ListItemFood
-        onPress={() => navigation.navigate('OrderDetail')}
-        inProgress
-        image={FoodDummy2}
-      />
-      <ListItemFood
-        onPress={() => navigation.navigate('OrderDetail')}
-        inProgress
-        image={FoodDummy3}
-      />
-      <ListItemFood
-        onPress={() => navigation.navigate('OrderDetail')}
-        inProgress
-        image={FoodDummy1}
-      />
-      <ListItemFood
-        onPress={() => navigation.navigate('OrderDetail')}
-        inProgress
-        image={FoodDummy1}
-      />
-      <ListItemFood
-        onPress={() => navigation.navigate('OrderDetail')}
-        inProgress
-        image={FoodDummy2}
-      />
-      <ListItemFood
-        onPress={() => navigation.navigate('OrderDetail')}
-        inProgress
-        image={FoodDummy3}
-      />
-      <ListItemFood
-        onPress={() => navigation.navigate('OrderDetail')}
-        inProgress
-        image={FoodDummy1}
-      />
-      <ListItemFood
-        onPress={() => navigation.navigate('OrderDetail')}
-        inProgress
-        image={FoodDummy1}
-      />
-      <ListItemFood
-        onPress={() => navigation.navigate('OrderDetail')}
-        inProgress
-        image={FoodDummy2}
-      />
-      <ListItemFood
-        onPress={() => navigation.navigate('OrderDetail')}
-        inProgress
-        image={FoodDummy3}
-      />
-      <ListItemFood
-        onPress={() => navigation.navigate('OrderDetail')}
-        inProgress
-        image={FoodDummy1}
       />
     </ScrollView>
   );
@@ -86,80 +31,10 @@ const PastOrders = () => {
       style={{flex: 1, backgroundColor: Colors.background}}
       showsVerticalScrollIndicator={false}>
       <Gap height={8} />
+
       <ListItemFood
         onPress={() => navigation.navigate('OrderDetail')}
         pastOrders
-        image={FoodDummy3}
-      />
-      <ListItemFood
-        onPress={() => navigation.navigate('OrderDetail')}
-        pastOrders
-        statusCancel
-        image={FoodDummy2}
-      />
-      <ListItemFood
-        onPress={() => navigation.navigate('OrderDetail')}
-        pastOrders
-        image={FoodDummy1}
-      />
-      <ListItemFood
-        onPress={() => navigation.navigate('OrderDetail')}
-        pastOrders
-        statusCancel
-        image={FoodDummy2}
-      />
-      <ListItemFood
-        onPress={() => navigation.navigate('OrderDetail')}
-        pastOrders
-        image={FoodDummy1}
-      />
-      <ListItemFood
-        onPress={() => navigation.navigate('OrderDetail')}
-        pastOrders
-        image={FoodDummy3}
-      />
-      <ListItemFood
-        onPress={() => navigation.navigate('OrderDetail')}
-        pastOrders
-        image={FoodDummy1}
-      />
-      <ListItemFood
-        onPress={() => navigation.navigate('OrderDetail')}
-        pastOrders
-        statusCancel
-        image={FoodDummy2}
-      />
-      <ListItemFood
-        onPress={() => navigation.navigate('OrderDetail')}
-        pastOrders
-        image={FoodDummy1}
-      />
-      <ListItemFood
-        onPress={() => navigation.navigate('OrderDetail')}
-        pastOrders
-        image={FoodDummy3}
-      />
-      <ListItemFood
-        onPress={() => navigation.navigate('OrderDetail')}
-        pastOrders
-        statusCancel
-        image={FoodDummy2}
-      />
-      <ListItemFood
-        onPress={() => navigation.navigate('OrderDetail')}
-        pastOrders
-        image={FoodDummy1}
-      />
-      <ListItemFood
-        onPress={() => navigation.navigate('OrderDetail')}
-        pastOrders
-        statusCancel
-        image={FoodDummy2}
-      />
-      <ListItemFood
-        onPress={() => navigation.navigate('OrderDetail')}
-        pastOrders
-        image={FoodDummy1}
       />
     </ScrollView>
   );
