@@ -17,7 +17,7 @@ const OrderDetail = ({navigation}) => {
             style={{...styles.listRight, marginHorizontal: 24, marginTop: 15}}>
             Item Ordered
           </Text>
-          <ListItemFood image={FoodDummy1} items />
+          <ListItemFood items />
         </View>
 
         <View style={{justifyContent: 'space-between', flex: 1}}>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   ImageBackground,
   StyleSheet,
@@ -6,14 +6,21 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import {FoodDummy6, IcBackWhite} from '../../assets';
+import {IcBackWhite} from '../../assets';
 import {Button, Counter, Rating} from '../../components';
+import FormatNumber from '../../utils/formatNumber';
 import {Texts} from '../../utils/texts';
 
-const FoodDetails = ({navigation}) => {
+const FoodDetails = ({navigation, route}) => {
+  const {picturePath, description, name, ingredients, price, rate} =
+    route.params;
+  const [count, setCount] = useState(1);
   return (
     <View style={{flex: 1}}>
-      <ImageBackground source={FoodDummy6} style={{height: 330}}>
+      <ImageBackground
+        resizeMode="cover"
+        source={{uri: picturePath}}
+        style={{height: 330}}>
         <TouchableOpacity
           style={{margin: 24}}
           onPress={() => navigation.goBack()}>
@@ -33,23 +40,21 @@ const FoodDetails = ({navigation}) => {
         <View>
           <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
             <View>
-              <Text style={{...Texts.regular2}}>Cherry Healthy</Text>
-              <Rating />
+              <Text style={{...Texts.regular2}}>{name}</Text>
+              <Rating rate={rate} />
             </View>
-            <Counter />
+            <Counter
+              countMin={() => setCount(count <= 1 ? 1 : count - 1)}
+              countPlus={() => setCount(count + 1)}
+              count={count}
+            />
           </View>
           <View style={{marginTop: 12}}>
-            <Text style={{...Texts.regular1}}>
-              Makanan khas Bandung yang cukup sering dipesan oleh anak muda
-              dengan pola makan yang cukup tinggi dengan mengutamakan diet yang
-              sehat dan teratur.
-            </Text>
+            <Text style={{...Texts.regular1}}>{description}</Text>
           </View>
           <View style={{marginTop: 16}}>
             <Text style={{...Texts.regular2, fontSize: 14}}>Ingredients:</Text>
-            <Text style={{...Texts.regular1}}>
-              Seledri, telur, blueberry, madu.
-            </Text>
+            <Text style={{...Texts.regular1}}>{ingredients}</Text>
           </View>
         </View>
 
@@ -60,9 +65,10 @@ const FoodDetails = ({navigation}) => {
           }}>
           <View>
             <Text style={{...Texts.regular1}}>Total Price:</Text>
-            <Text style={{...Texts.regular2, fontSize: 18}}>
-              IDR 12.289.000
-            </Text>
+            <FormatNumber
+              style={{...Texts.regular2, fontSize: 18}}
+              number={price * count}
+            />
           </View>
           <Button
             text="Order Now"

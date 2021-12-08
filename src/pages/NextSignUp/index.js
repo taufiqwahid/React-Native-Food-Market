@@ -59,14 +59,23 @@ const NextSignUp = ({navigation}) => {
             .then(res => {
               toastMessage('Berhasil Register', 'success');
               dispatch(setLoading(false));
+              dispatch({
+                type: 'SET_UPLOAD_AVATAR',
+                value: {
+                  profile_photo_url: `https://foodmarket-backend.buildwithangga.id/storage/${res.data.data[0]}`,
+                },
+              });
               navigation.replace('SuccessSignUp');
             })
             .catch(err => {
+              console.log(err.response);
               toastMessage(err?.response?.data?.message);
               dispatch(setLoading(false));
             });
         })
         .catch(err => {
+          console.log(err.response);
+
           toastMessage(err?.response?.data?.message);
           dispatch(setLoading(false));
         });

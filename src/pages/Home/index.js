@@ -1,24 +1,46 @@
-import React from 'react';
-import {ScrollView, StyleSheet, View} from 'react-native';
-import {FoodDummy1, FoodDummy2, FoodDummy3} from '../../assets';
+import React, {useEffect} from 'react';
+import {FlatList, StyleSheet, View} from 'react-native';
+import {useDispatch, useSelector} from 'react-redux';
 import {FoodCard, Gap, HomeProfile, TabViewFood} from '../../components';
+import {getFood, getFoodType} from '../../redux/action/food';
 import {Colors} from '../../utils/colors';
 
-const Home = () => {
+const Home = ({navigation}) => {
+  const dispatch = useDispatch();
+  const userReducer = useSelector(state => state.userReducer);
+  const foodReducer = useSelector(state => state.foodReducer);
+
+  useEffect(() => {
+    dispatch(getFood());
+    dispatch(getFoodType('new_food'));
+    dispatch(getFoodType('popular'));
+    dispatch(getFoodType('recommended'));
+  }, []);
+
+  console.log(foodReducer);
+
   return (
     <View style={{backgroundColor: Colors.background, flex: 1}}>
-      <HomeProfile />
+      <HomeProfile photo={userReducer?.user?.profile_photo_url} />
 
-      <View>
-        <ScrollView
-          style={{flexDirection: 'row'}}
+      <View style={{flexDirection: 'row'}}>
+        <Gap width={24} color={Colors.background} />
+        <FlatList
+          keyExtractor={item => item.id}
+          data={foodReducer.food}
+          showsHorizontalScrollIndicator={false}
           horizontal
-          showsHorizontalScrollIndicator={false}>
-          <Gap width={24} color={Colors.background} />
-          <FoodCard image={FoodDummy1} />
-          <FoodCard image={FoodDummy2} />
-          <FoodCard image={FoodDummy3} />
-        </ScrollView>
+          renderItem={({item, index}) => (
+            <FoodCard
+              key={index}
+              image={item.picturePath}
+              name={item.name}
+              rate={item.rate}
+              price={item.price}
+              item={item}
+            />
+          )}
+        />
       </View>
 
       <TabViewFood />

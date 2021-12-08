@@ -1,11 +1,12 @@
 import React from 'react';
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity} from 'react-native';
 import {IcNext} from '../../assets';
 import {Texts} from '../../utils/texts';
 
-const ListItemDropDown = ({textLeft, textRight, total}) => {
+const ListItemDropDown = ({textLeft, textRight, total, onPress}) => {
   return (
-    <View
+    <TouchableOpacity
+      onPress={onPress}
       style={{
         flexDirection: 'row',
         justifyContent: 'space-between',
@@ -15,7 +16,7 @@ const ListItemDropDown = ({textLeft, textRight, total}) => {
       }}>
       <Text style={styles.listLeft}>{textLeft}</Text>
       <IcNext />
-    </View>
+    </TouchableOpacity>
   );
 };
 
