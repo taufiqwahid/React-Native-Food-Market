@@ -7,25 +7,25 @@ const initialFood = {
 
 export const foodReducer = (state = initialFood, action) => {
   switch (action.type) {
-    case 'GET_FOOD':
+    case 'SET_FOOD':
       return {
         ...state,
         food: action.value,
       };
 
-    case 'GET_NEWTASTE':
+    case 'SET_NEWTASTE':
       return {
         ...state,
         newTaste: action.value,
       };
 
-    case 'GET_POPULAR':
+    case 'SET_POPULAR':
       return {
         ...state,
         popular: action.value,
       };
 
-    case 'GET_RECOMMENDED':
+    case 'SET_RECOMMENDED':
       return {
         ...state,
         recommended: action.value,

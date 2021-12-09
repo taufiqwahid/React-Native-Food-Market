@@ -3,9 +3,10 @@ import {CommonActions} from '@react-navigation/native';
 import {combineReducers} from 'redux';
 import {persistReducer} from 'redux-persist';
 import {registerReducer} from './auth';
-import {globalReducer} from './global';
-import {userReducer} from './user';
 import {foodReducer} from './food';
+import {globalReducer} from './global';
+import {orderReducer} from './order';
+import {userReducer} from './user';
 
 const persistConfig = {
   key: 'root',
@@ -18,6 +19,7 @@ const appReducer = combineReducers({
   registerReducer,
   userReducer,
   foodReducer,
+  orderReducer,
 });
 
 const rootReducer = (state, action) => {
