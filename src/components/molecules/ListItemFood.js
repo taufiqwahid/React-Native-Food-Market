@@ -16,7 +16,7 @@ const ListItemFood = ({
   rating,
   inProgress,
   pastOrders,
-  statusCancel,
+  status,
   onPress,
 }) => {
   return (
@@ -49,16 +49,20 @@ const ListItemFood = ({
         </View>
       </View>
       {rating && <Rating rate={rate} />}
-      {pastOrders && (
+      {(inProgress || pastOrders) && (
         <View>
           <Text style={{...Texts.regular1, fontSize: 10, color: Colors.grey}}>
             Mei 2, 09:00
           </Text>
-          {statusCancel && (
-            <Text style={{...Texts.regular1, fontSize: 10, color: Colors.red}}>
-              Cancelled
-            </Text>
-          )}
+          <Text
+            style={{
+              ...Texts.regular1,
+              fontSize: 10,
+              color: status == 'CANCELLED' ? Colors.red : Colors.green,
+              textTransform: 'capitalize',
+            }}>
+            {status}
+          </Text>
         </View>
       )}
       {items && (

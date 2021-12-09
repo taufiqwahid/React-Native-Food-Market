@@ -17,8 +17,6 @@ const Home = ({navigation}) => {
     dispatch(getFoodType('recommended'));
   }, []);
 
-  console.log(foodReducer);
-
   return (
     <View style={{backgroundColor: Colors.background, flex: 1}}>
       <HomeProfile photo={userReducer?.user?.profile_photo_url} />

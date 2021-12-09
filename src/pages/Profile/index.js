@@ -1,11 +1,13 @@
 import React from 'react';
 import {Image, StyleSheet, Text, View} from 'react-native';
-import {ProfileDummy} from '../../assets';
+import {useSelector} from 'react-redux';
 import {Gap, TabViewProfile} from '../../components';
 import {Colors} from '../../utils/colors';
 import {Texts} from '../../utils/texts';
 
 const Profile = () => {
+  const user = useSelector(state => state.userReducer.user);
+
   return (
     <View style={{flex: 1, backgroundColor: Colors.background}}>
       <View
@@ -27,7 +29,7 @@ const Profile = () => {
             borderStyle: 'dashed',
           }}>
           <Image
-            source={ProfileDummy}
+            source={{uri: user.profile_photo_url}}
             style={{
               borderRadius: 100,
               height: 90,
@@ -39,8 +41,8 @@ const Profile = () => {
           />
         </View>
         <View style={{alignItems: 'center', marginTop: 16}}>
-          <Text style={{...Texts.regular2}}>Angga Risky</Text>
-          <Text style={{...Texts.regular1}}>wepanda@gmail.com</Text>
+          <Text style={{...Texts.regular2}}>{user.name}</Text>
+          <Text style={{...Texts.regular1}}>{user.email}</Text>
         </View>
       </View>
       <Gap height={24} color={Colors.background} />

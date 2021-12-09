@@ -1,42 +1,81 @@
 import {useNavigation} from '@react-navigation/core';
 import React from 'react';
-import {ScrollView, StyleSheet, Text} from 'react-native';
+import {FlatList, StyleSheet, Text, View} from 'react-native';
 import {SceneMap, TabBar, TabView} from 'react-native-tab-view';
+import {useSelector} from 'react-redux';
 import {Gap} from '..';
-import {FoodDummy1, FoodDummy2, FoodDummy3} from '../../assets';
 import {Colors} from '../../utils/colors';
 import {Texts} from '../../utils/texts';
 import ListItemFood from './ListItemFood';
 
 const InProgress = () => {
   const navigation = useNavigation();
+  const orderReducer = useSelector(state => state.orderReducer);
   return (
-    <ScrollView
-      style={{flex: 1, backgroundColor: Colors.background}}
-      showsVerticalScrollIndicator={false}>
+    <View style={{flex: 1, backgroundColor: Colors.background}}>
       <Gap height={8} />
-
-      <ListItemFood
-        onPress={() => navigation.navigate('OrderDetail')}
-        inProgress
+      <FlatList
+        scrollEnabled
+        data={orderReducer?.inProgress}
+        renderItem={({item, index}) => (
+          <>
+            <ListItemFood
+              key={index}
+              image={item?.food?.picturePath}
+              name={item?.food?.name}
+              rate={item?.food?.rate}
+              price={item?.food?.price}
+              item={item?.food}
+              countItem={item?.quantity}
+              status={item?.status}
+              onPress={() => navigation.navigate('OrderDetail', item)}
+              inProgress
+            />
+            <ListItemFood
+              key={index + 13}
+              image={item?.food?.picturePath}
+              name={item?.food?.name}
+              rate={item?.food?.rate}
+              price={item?.food?.price}
+              item={item?.food}
+              countItem={item?.quantity}
+              status={item?.status}
+              onPress={() => navigation.navigate('OrderDetail', item)}
+              inProgress
+            />
+          </>
+        )}
       />
-    </ScrollView>
+    </View>
   );
 };
 
 const PastOrders = () => {
   const navigation = useNavigation();
-  return (
-    <ScrollView
-      style={{flex: 1, backgroundColor: Colors.background}}
-      showsVerticalScrollIndicator={false}>
-      <Gap height={8} />
+  const orderReducer = useSelector(state => state.orderReducer);
 
-      <ListItemFood
-        onPress={() => navigation.navigate('OrderDetail')}
-        pastOrders
+  return (
+    <View style={{flex: 1, backgroundColor: Colors.background}}>
+      <Gap height={8} />
+      <FlatList
+        scrollEnabled
+        data={orderReducer?.pastOrders}
+        renderItem={({item, index}) => (
+          <ListItemFood
+            key={index}
+            image={item?.food?.picturePath}
+            name={item?.food?.name}
+            rate={item?.food?.rate}
+            price={item?.food?.price}
+            item={item?.food}
+            countItem={item?.quantity}
+            status={item?.status}
+            onPress={() => navigation.navigate('OrderDetail', item)}
+            pastOrders
+          />
+        )}
       />
-    </ScrollView>
+    </View>
   );
 };
 

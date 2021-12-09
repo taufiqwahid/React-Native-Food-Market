@@ -1,10 +1,9 @@
 import {useNavigation} from '@react-navigation/core';
 import React from 'react';
-import {FlatList, ScrollView, StyleSheet, Text, View} from 'react-native';
+import {FlatList, StyleSheet, Text, View} from 'react-native';
 import {SceneMap, TabBar, TabView} from 'react-native-tab-view';
 import {useSelector} from 'react-redux';
 import {Gap} from '..';
-import {FoodDummy1, FoodDummy2, FoodDummy3} from '../../assets';
 import {Colors} from '../../utils/colors';
 import {Texts} from '../../utils/texts';
 import ListItemFood from './ListItemFood';
@@ -13,12 +12,10 @@ const NewTaste = () => {
   const foodReducer = useSelector(state => state.foodReducer);
   const navigation = useNavigation();
   return (
-    <View
-      style={{flex: 1, backgroundColor: '#fff'}}
-      showsVerticalScrollIndicator={false}>
+    <View style={{flex: 1, backgroundColor: '#fff'}}>
       <Gap height={8} />
       <FlatList
-        showsVerticalScrollIndicator={false}
+        scrollEnabled
         data={foodReducer?.newTaste}
         renderItem={({item, index}) => (
           <ListItemFood
@@ -40,12 +37,10 @@ const Popular = () => {
   const foodReducer = useSelector(state => state.foodReducer);
   const navigation = useNavigation();
   return (
-    <View
-      style={{flex: 1, backgroundColor: '#fff'}}
-      showsVerticalScrollIndicator={false}>
+    <View style={{flex: 1, backgroundColor: '#fff'}}>
       <Gap height={8} />
       <FlatList
-        showsVerticalScrollIndicator={false}
+        scrollEnabled
         data={foodReducer?.popular}
         renderItem={({item, index}) => (
           <ListItemFood
@@ -55,7 +50,7 @@ const Popular = () => {
             rate={item?.rate}
             price={item?.price}
             item={item}
-            onPress={() => navigation.navigate('FoodDetail', {item: item})}
+            onPress={() => navigation.navigate('FoodDetail', item)}
             rating
           />
         )}
@@ -68,12 +63,10 @@ const Recommended = () => {
   const foodReducer = useSelector(state => state.foodReducer);
   const navigation = useNavigation();
   return (
-    <View
-      style={{flex: 1, backgroundColor: '#fff'}}
-      showsVerticalScrollIndicator={false}>
+    <View style={{flex: 1, backgroundColor: '#fff'}}>
       <Gap height={8} />
       <FlatList
-        showsVerticalScrollIndicator={false}
+        scrollEnabled
         data={foodReducer?.recommended}
         renderItem={({item, index}) => (
           <ListItemFood
@@ -83,7 +76,7 @@ const Recommended = () => {
             rate={item?.rate}
             price={item?.price}
             item={item}
-            onPress={() => navigation.navigate('FoodDetail', {item: item})}
+            onPress={() => navigation.navigate('FoodDetail', item)}
             rating
           />
         )}

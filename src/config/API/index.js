@@ -7,4 +7,7 @@ export const com = {
   food: 'food',
   foodType: types => `food?types=${types}`,
   checkout: 'checkout',
+  transaction: 'transaction',
+  transactionStatus: status => `transaction?status=${status}`,
+  transactionUpdate: id => `transaction/${id}`,
 };
