@@ -34,7 +34,6 @@ const OrderSummary = ({navigation, route}) => {
   };
 
   const onChangePagePayment = page => {
-    console.log('page', page);
     if (page.title === 'Laravel') {
       navigation.dispatch(
         CommonActions.reset({
